@@ -193,6 +193,16 @@ app.get('/blogs', async (req,res)=>{
 })
 
 
+// single post route
 
+app.get('/post/:id', async (req,res)=>{
+    
+    const id = req.params.id
+    const postDoc = await BLOG.findById(id).populate('author', ['username','displayName'])
+    
+    
+    res.json(postDoc)
+
+})
 
     
