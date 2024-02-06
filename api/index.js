@@ -5,9 +5,12 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 const BLOG = require('./models/blogModel.js')
+require('dotenv').config()
+const PORT = process.env.PORT
+const MONGO_STRING = process.env.MONGO_STRING
+const jwtSecret = process.env.jwtSecret
 
 
-const jwtSecret = 's656sd5sf4y44s58t9y5f4sew551d4f1h'
 
 
 
@@ -17,11 +20,11 @@ app.use(express.json())
 app.use(cookieParser())
 app.use('/uploads', express.static(__dirname + '/uploads'))
 
-app.listen(4000, ()=>{console.log('app listening at PORT 4000')})
+app.listen(PORT, ()=>{console.log(`app listening at PORT ${PORT}`)})
 
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/blogDB').then(()=>{console.log('mongoose connected')}).catch((err)=>{console.log('something went wrong')})
+mongoose.connect(MONGO_STRING).then(()=>{console.log('mongoose connected')}).catch((err)=>{console.log('something went wrong')})
 
 
 
