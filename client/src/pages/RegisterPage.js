@@ -10,7 +10,8 @@ async function handleSubmit(e){
 
     e.preventDefault()
 
-const responseData = await fetch('http://localhost:4000/register',{
+    try {
+        const responseData = await fetch('http://localhost:4000/register',{
             method:'POST',
             body: JSON.stringify({username, password, displayName}),
             headers: {'Content-Type': "application/json"}
@@ -22,11 +23,14 @@ if (responseData.status == 201) {
     alert('Registration failed, please try again')
 }
         
-
         
-    
+    } catch (error) {
+console.log(error)        
+    }
 
-        console.log(username, password)
+
+
+
     }
 
 

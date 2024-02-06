@@ -6,7 +6,7 @@ import {Route, Routes} from 'react-router-dom'
 import IndexPage from './pages/IndexPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import { UserContextProvider } from './userContext';
+import { UserContextProvider } from './UserContext.js';
 import CreateNewArticle from './pages/CreateNewArticle';
 import SinglePostPage from './pages/SinglePostPage';
 

@@ -10,23 +10,27 @@ export default function LoginPage(){
 
     async function handleSubmit(ev) {
         ev.preventDefault()
-        console.log("hii")
-        const responseData = await fetch('http://localhost:4000/login', {
-            method: 'POST',
-            body: JSON.stringify({username, password}),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'include'
-        })
-
-        if (responseData.status == 200)
-        {
-            alert('login success')
-            setRedirect(true)
-        } else {
-            alert('wrong credentials')
+        try {
+            const responseData = await fetch('http://localhost:4000/login', {
+                method: 'POST',
+                body: JSON.stringify({username, password}),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            })
+    
+            if (responseData.status == 200)
+            {
+                alert('login success')
+                setRedirect(true)
+            } else {
+                alert('wrong credentials')
+            }    
+        } catch (error) {
+            console.log(error)
         }
+        
         
 
         

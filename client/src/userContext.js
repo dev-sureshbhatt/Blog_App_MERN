@@ -1,8 +1,11 @@
-const { createContext, Children } = require("react");
+import { createContext } from "react";
 
-export const userContext = createContext({})
-export function UserContextProvider({children}) {
-    return (<>
-    {children}
-    </>)
+export const UserContext = createContext()
+
+export function UserContextProvider({children}){
+    return(
+        <>
+        {children}
+        </>
+    )
 }

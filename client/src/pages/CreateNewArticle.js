@@ -22,12 +22,16 @@ export default function CreateNewArticle() {
         data.set('summary', summary)
         data.set('content', content)
         data.set('files', files[0])
-
-        const response = await fetch('http://localhost:4000/create-new-article', {
+try {
+  const response = await fetch('http://localhost:4000/create-new-article', {
             method: 'POST',
             credentials: 'include',
             body: data,
         })
+} catch (error) {
+  console.log(error)
+}
+        
     }
   return (
 

@@ -8,11 +8,15 @@ export default function IndexPage() {
 
     useEffect(()=> {
 
-        fetch('http://localhost:4000/blogs').then((response)=> {
+        fetch('http://localhost:4000/blogs')
+        .then((response)=> {
             response.json().then((posts)=>{
                 setPosts(posts)
             })
 
+        })
+        .catch((err)=>{
+            console.log(err)
         })
     }, [])
 
