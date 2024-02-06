@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 const BLOG = require('./models/blogModel.js')
 require('dotenv').config()
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 4000
 const MONGO_STRING = process.env.MONGO_STRING
 const jwtSecret = process.env.jwtSecret
 
