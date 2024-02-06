@@ -25,7 +25,7 @@ export default function LoginPage(){
             if (responseData.status == 200)
             {
                 responseData.json().then((userInfo)=>{
-                    console.log("userinfo is", userInfo)
+                    
                     setUserInfo(userInfo)
                     
                 setRedirect(true)

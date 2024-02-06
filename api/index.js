@@ -78,16 +78,16 @@ app.post('/register',async (req,res)=>{
 
 app.post('/login', async (req,res)=>{
     const {username, password} = req.body
-    console.log(username, password)
+    
     
     
     try {
         
     const userDoc = await USER.findOne({username})
-    console.log("userDoc is", userDoc)
+    
     const userExist = bcrypt.compareSync(password, userDoc.password)
-    console.log('userfoundis', userDoc)
-    console.log(userExist)
+    
+    
     if(userExist) {
 
         jwt.sign({username, id:userDoc._id}, jwtSecret, {}, (err, token)=>{
