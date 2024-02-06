@@ -92,7 +92,7 @@ app.post('/login', async (req,res)=>{
 
         jwt.sign({username, id:userDoc._id}, jwtSecret, {}, (err, token)=>{
             if (err) throw err;
-            res.cookie('token', token).status(200).json({msg:'credentials ok and token generated'})
+            res.cookie('token', token).status(200).json({id:userDoc._id, username})
 
         })
         

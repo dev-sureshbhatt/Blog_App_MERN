@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "./UserContext";
+
 
 export default function Header() {
 
+  const {userInfo, setUserInfo} = useContext(UserContext)
 
-  const [username, setUsername] = useState('')
   useEffect(()=>{
 
     fetch('http://localhost:4000/profile', {
@@ -14,7 +16,7 @@ export default function Header() {
       response.json().then((userInfo)=>{
         
         
-        setUsername(userInfo.username)
+        setUserInfo(userInfo)
         
         
       })
@@ -24,6 +26,9 @@ export default function Header() {
 
   }, [])
 
+const username = userInfo?.username
+console.log("username is", username)
+
 
 
 
@@ -32,7 +37,9 @@ function handleLogout() {
     method: 'POST',
     credentials: "include"
   }).then(()=>{
-    setUsername('')
+    setUserInfo(null)
+  }).catch((err)=>{
+alert('try  logging out again')
   })
 }
 
