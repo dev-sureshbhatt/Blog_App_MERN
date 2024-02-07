@@ -61,7 +61,7 @@ app.post('/register',async (req,res)=>{
         const salt = bcrypt.genSaltSync(10)
         const hashPassword = bcrypt.hashSync(password, salt)
         const userDoc = await USER.create({username: username, password: hashPassword, displayName: displayName})   
-        console.log('userdoc is', userDoc)
+        
         res.status(201).json({msg:'user created'})
          
     } catch (error) {
@@ -90,9 +90,9 @@ app.post('/login', async (req,res)=>{
     
     if(userExist) {
 
-        jwt.sign({username, id:userDoc._id}, jwtSecret, {}, (err, token)=>{
+        jwt.sign({displayName:userDoc.displayName, username, id:userDoc._id}, jwtSecret, {}, (err, token)=>{
             if (err) throw err;
-            res.cookie('token', token).status(200).json({id:userDoc._id, username})
+            res.cookie('token', token).status(200).json({id:userDoc._id, username, displayName: userDoc.displayName})
 
         })
         

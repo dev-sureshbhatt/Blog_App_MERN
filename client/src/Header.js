@@ -16,9 +16,7 @@ export default function Header() {
       response.json().then((userInfo)=>{
         
         
-        setUserInfo(userInfo)
-        
-        
+        setUserInfo(userInfo)        
       })
     }).catch((err)=>{
       console.log(err)

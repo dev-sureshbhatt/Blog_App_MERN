@@ -26,6 +26,7 @@ export default function LoginPage(){
             {
                 responseData.json().then((userInfo)=>{
                     
+                    
                     setUserInfo(userInfo)
                     
                 setRedirect(true)

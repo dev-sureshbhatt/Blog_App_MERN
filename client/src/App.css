@@ -161,3 +161,16 @@ div.post-page div.author{
   font-size: 0.8rem;
   font-weight: bold;
 }
+
+div.post-page button.edit{
+  text-transform: none;
+  margin-bottom: 10px;
+  
+}
+
+div.post-page div.edit a{
+  text-decoration: none;
+}
+
+
+
