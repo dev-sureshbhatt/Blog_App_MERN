@@ -204,13 +204,14 @@ console.log('inside file')
         if (info){
             
 
-             
-             if (JSON.stringify(postDoc.author) === JSON.stringify(info.id)) {
-
-                const {title, id, summary, content} = req.body
+            const {title, id, summary, content} = req.body
             
                 const postDoc = await BLOG.findById(id)
                 console.log("postdoc is", postDoc)
+             
+             if (JSON.stringify(postDoc.author) === JSON.stringify(info.id)) {
+
+                
    
                 const updatedDoc = await BLOG.findByIdAndUpdate(id, {title, summary, content}, {new: true})
                 console.log("updated doc is", updatedDoc)
