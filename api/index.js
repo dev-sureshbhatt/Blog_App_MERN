@@ -202,18 +202,18 @@ console.log('inside file')
             res.status(400).json({msg: false})
         }
         if (info){
-            const {title, id, summary, content} = req.body
             
-             const postDoc = await BLOG.findById(id)
-             console.log("postdoc is", postDoc)
-
-             const updatedDoc = await BLOG.findByIdAndUpdate(id, {title, summary, content}, {new: true})
-             console.log("updated doc is", updatedDoc)
 
              
              if (JSON.stringify(postDoc.author) === JSON.stringify(info.id)) {
 
-
+                const {title, id, summary, content} = req.body
+            
+                const postDoc = await BLOG.findById(id)
+                console.log("postdoc is", postDoc)
+   
+                const updatedDoc = await BLOG.findByIdAndUpdate(id, {title, summary, content}, {new: true})
+                console.log("updated doc is", updatedDoc)
                 }
                 res.json(postDoc)
             }
