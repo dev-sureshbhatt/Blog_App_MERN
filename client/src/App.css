@@ -165,12 +165,19 @@ div.post-page div.author{
 div.post-page button.edit{
   text-transform: none;
   margin-bottom: 10px;
+  cursor: pointer;
   
 }
 
 div.post-page div.edit a{
   text-decoration: none;
+  
 }
 
+
+
+button.submit{
+  margin-top: 10px;
+}
 
 

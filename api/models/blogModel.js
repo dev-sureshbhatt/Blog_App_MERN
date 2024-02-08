@@ -12,7 +12,7 @@ const blogSchema = new mongoose.Schema({
         type: String
     },
     cover: {
-        type: String
+        type: String,
     },
     author: {
         type: mongoose.Schema.Types.ObjectId, ref:'user'

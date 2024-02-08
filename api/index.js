@@ -157,20 +157,24 @@ app.post('/create-new-article', uploadMiddleware.single('files') , async (req,re
 
         } 
         if (info) {
+            
+                
             const {path, originalname} = req.file
     const parts = originalname.split(".")
     const ext = parts[parts.length -1]
     const newPath = path + '.' + ext
 
-    const {title, summary, content} = req.body
+   
     fs.renameSync(path, newPath)
+    
+    const {title, summary, content} = req.body
 
     
     const postDoc = await BLOG.create({
         title, 
         summary,
         content,
-        cover: newPath,
+        cover: newPath || null,
         author: info.id
     })
 
@@ -183,6 +187,46 @@ app.post('/create-new-article', uploadMiddleware.single('files') , async (req,re
 
     
 })
+
+
+// put requuest 
+app.put('/create-new-article', uploadMiddleware.single('file'), async (req,res)=>{
+    if (req.file) {
+console.log('inside file')
+    }
+    
+    const {token} = req.cookies
+    jwt.verify(token, jwtSecret, {}, async (err, info)=>{
+        if (err){
+            alert('you are not authorized')
+            res.status(400).json({msg: false})
+        }
+        if (info){
+            const {title, id, summary, content} = req.body
+            
+             const postDoc = await BLOG.findById(id)
+             console.log("postdoc is", postDoc)
+
+             const updatedDoc = await BLOG.findByIdAndUpdate(id, {title, summary, content}, {new: true})
+             console.log("updated doc is", updatedDoc)
+
+             
+             if (JSON.stringify(postDoc.author) === JSON.stringify(info.id)) {
+
+
+                }
+                res.json(postDoc)
+            }
+             
+            
+        })
+    })
+
+
+
+
+
+
 
 // fetch all post
 

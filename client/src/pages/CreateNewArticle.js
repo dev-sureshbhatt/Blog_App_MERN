@@ -71,7 +71,7 @@ try {
                 setContent(newValue.getData())}}
 
          />
-         <button>Submit</button>
+         <button className='submit'>Submit</button>
     </form>
   )
 }
