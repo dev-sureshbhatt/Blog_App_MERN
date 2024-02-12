@@ -48,6 +48,16 @@ const userSchema = new mongoose.Schema({
 const USER = new mongoose.model('user', userSchema)
 
 
+//request logging middelware
+
+app.use(function logRequest(req,res,next){
+console.log(req.url, req)  
+next()
+})
+
+
+
+
 
 
 app.get('/',(req,res)=>{res.send("Hi")})
