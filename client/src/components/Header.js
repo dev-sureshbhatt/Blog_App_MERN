@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "./UserContext";
+import { UserContext } from "../UserContext";
 
 
-export default function Header() {
+function Header() {
 
   const {userInfo, setUserInfo} = useContext(UserContext)
 
@@ -60,3 +60,6 @@ alert('try  logging out again')
               </header>
     )
 }
+
+
+export default Header
