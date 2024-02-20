@@ -9,6 +9,7 @@ require('dotenv').config()
 const PORT = process.env.PORT || 4000
 const MONGO_STRING = process.env.MONGO_STRING
 const jwtSecret = process.env.jwtSecret
+const BASE_URL = process.env.BASE_URL
 
 
 
@@ -102,7 +103,7 @@ app.post('/login', async (req,res)=>{
 
         jwt.sign({displayName:userDoc.displayName, username, id:userDoc._id}, jwtSecret, {}, (err, token)=>{
             if (err) throw err;
-            res.cookie('token', token).status(200).json({id:userDoc._id, username, displayName: userDoc.displayName})
+            res.cookie('token', token, {sameSite:'none', httpOnly:true, secure: true}).status(200).json({id:userDoc._id, username, displayName: userDoc.displayName})
 
         })
         
@@ -146,7 +147,7 @@ app.get('/profile', (req,res)=>{
 //logout function
 
 app.post('/logout', (req,res)=>{
-    res.cookie('token', '').json("empty token")
+    res.cookie('token', '', {sameSite:'none', httpOnly:true, secure: true}).json("empty token")
 })
 
 
